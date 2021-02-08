@@ -1,3 +1,3 @@
-from myLib import *
+import pycpp_lib as pc
 
-My_Function(16)
+pc.My_Function(16)
