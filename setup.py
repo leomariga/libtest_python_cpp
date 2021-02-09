@@ -8,14 +8,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-class NoSuffixBuilder(build_ext):
-    def get_ext_filename(self, ext_name):
-        filename = super().get_ext_filename(ext_name)
-        suffix = sysconfig.get_config_var('EXT_SUFFIX')
-        return filename.replace(suffix, "")
+# class NoSuffixBuilder(build_ext):
+#     def get_ext_filename(self, ext_name):
+#         filename = super().get_ext_filename(ext_name)
+#         suffix = sysconfig.get_config_var('EXT_SUFFIX')
+#         return filename.replace(suffix, "")
 
 
-extensions = [Extension(os.path.join('pycpp_lib', 'mylib_core'),
+extensions = [Extension('mylib_core',
                         [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
                         depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
                         optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
@@ -33,7 +33,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     keywords='test',
     ext_modules=extensions,
-    cmdclass={"build_ext": NoSuffixBuilder},
+    # cmdclass={"build_ext": NoSuffixBuilder},
     project_urls={
         'Documentation': 'https://github.com/leomariga/libtest_python_cpp',
         'Source': 'https://github.com/leomariga/libtest_python_cpp',
