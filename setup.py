@@ -16,7 +16,7 @@ with open("README.md", "r") as fh:
 #         return filename.replace(suffix, "")
 
 
-extensions = [Extension('mylib_core',
+extensions = [Extension('lib',
                         [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
                         depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
                         optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
