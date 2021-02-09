@@ -22,7 +22,7 @@ extensions = [Extension("pycpp_lib/mylib_core",
 
 setuptools.setup(
     name="libcppython", # Replace with your own username
-    version="0.0.7",
+    version="0.0.8",
     author="Leonardo Mariga",
     author_email="leomariga@gmail.com",
     description="A test using CPP files on a python library",
