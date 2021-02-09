@@ -1,18 +1,28 @@
 import setuptools
 from setuptools import setup, find_packages, Extension
+from Cython.Distutils import build_ext
+from distutils import sysconfig
+import os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-extensions = [Extension("pyRANSAC3D.core",
-                        ["src/library.c"],
-                        depends=["src/library.h"],
-                        include_dirs=["src"],),]
+class NoSuffixBuilder(build_ext):
+    def get_ext_filename(self, ext_name):
+        filename = super().get_ext_filename(ext_name)
+        suffix = sysconfig.get_config_var('EXT_SUFFIX')
+        return filename.replace(suffix, "")
+
+
+extensions = [Extension("pycpp_lib/mylib_core",
+                        ["pycpp_lib/cpp/lib.cpp"],
+                        depends=["pycpp_lib/cpp/lib.h"],
+                        include_dirs=["pycpp_lib/cpp"],),]
 
 setuptools.setup(
-    name="lib_cpp_python_test_", # Replace with your own username
-    version="0.0.1",
+    name="libcppython", # Replace with your own username
+    version="0.0.6",
     author="Leonardo Mariga",
     author_email="leomariga@gmail.com",
     description="A test using CPP files on a python library",
@@ -22,6 +32,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     keywords='test',
     ext_modules=extensions,
+    cmdclass={"build_ext": NoSuffixBuilder},
     project_urls={
         'Documentation': 'https://github.com/leomariga/libtest_python_cpp',
         'Source': 'https://github.com/leomariga/libtest_python_cpp',
