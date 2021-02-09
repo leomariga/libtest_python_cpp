@@ -14,7 +14,7 @@ on: [push, pull_request]
 env:
   # only needed for Py3.5 on Windows for some reason
   # ideally, would be picked up from pyproject.toml
-  CIBW_BEFORE_BUILD: pip install cython setuptools wheel twine
+  CIBW_BEFORE_BUILD: pip install cython
 
 jobs:
   build_wheels:
@@ -53,10 +53,11 @@ jobs:
         name: Install Python
         with:
           python-version: '3.x'
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip3 install cython setuptools wheel twine
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip3 install cython setuptools wheel twine
 
       - name: Build sdist
         run: python setup.py sdist
