@@ -19,6 +19,7 @@ extensions = [Extension('mylib_core',
                         [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
                         depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
                         optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
+                        extra_compile_args=['/d2FH4-'] if sys.platform == 'win32' else [],
                         include_dirs=[os.path.join('pycpp_lib', 'cpp')],),]
 
 setuptools.setup(
