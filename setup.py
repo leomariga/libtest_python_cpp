@@ -18,6 +18,7 @@ class NoSuffixBuilder(build_ext):
 extensions = [Extension("pycpp_lib/mylib_core",
                         ["pycpp_lib/cpp/lib.cpp"],
                         depends=["pycpp_lib/cpp/lib.h"],
+                        optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
                         include_dirs=["pycpp_lib/cpp"],),]
 
 setuptools.setup(
