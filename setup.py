@@ -15,11 +15,11 @@ class NoSuffixBuilder(build_ext):
         return filename.replace(suffix, "")
 
 
-extensions = [Extension("pycpp_lib/mylib_core",
-                        ["pycpp_lib/cpp/lib.cpp"],
-                        depends=["pycpp_lib/cpp/lib.h"],
+extensions = [Extension(os.path.join('pycpp_lib', 'mylib_core'),
+                        [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
+                        depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
                         optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
-                        include_dirs=["pycpp_lib/cpp"],),]
+                        include_dirs=[os.path.join('pycpp_lib', 'cpp')],),]
 
 setuptools.setup(
     name="libcppython", # Replace with your own username
