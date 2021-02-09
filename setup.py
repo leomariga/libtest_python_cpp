@@ -3,6 +3,7 @@ from setuptools import setup, find_packages, Extension
 from Cython.Distutils import build_ext
 from distutils import sysconfig
 import os
+import sys
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
