@@ -1,11 +1,6 @@
 name: wheels
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-  release:
+on: [push, pull_request]
 
 env:
   # only needed for Py3.5 on Windows for some reason
