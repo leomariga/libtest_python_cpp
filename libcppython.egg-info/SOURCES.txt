@@ -1,9 +1,0 @@
-MANIFEST.in
-README.md
-setup.py
-libcppython.egg-info/PKG-INFO
-libcppython.egg-info/SOURCES.txt
-libcppython.egg-info/dependency_links.txt
-libcppython.egg-info/top_level.txt
-pycpp_lib/__init__.py
-pycpp_lib/myLib.py
