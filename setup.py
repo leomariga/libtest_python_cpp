@@ -9,16 +9,17 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-class NoSuffixBuilder(build_ext):
-    def get_ext_filename(self, ext_name):
-        filename = super().get_ext_filename(ext_name)
-        suffix = sysconfig.get_config_var('EXT_SUFFIX')
-        ext = os.path.splitext(filename)[1]
-        return filename.replace(suffix, "") + ext
+# class NoSuffixBuilder(build_ext):
+#     def get_ext_filename(self, ext_name):
+#         filename = super().get_ext_filename(ext_name)
+#         suffix = sysconfig.get_config_var('EXT_SUFFIX')
+#         ext = os.path.splitext(filename)[1]
+#         return filename.replace(suffix, "") + ext
 
 libcppython = Extension('libcppython',
                     sources = ['libcppython.cpp'],
                     depends=['libcppython.h'],
+                    language='c++',
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
 
 # extensions = [Extension('lib',
@@ -39,9 +40,8 @@ setuptools.setup(
     url="https://github.com/leomariga/libtest_python_cpp",
     packages=setuptools.find_packages(),
     keywords='test',
-    py_modules=["libcppython"],
     ext_modules=[libcppython],
-    cmdclass={"build_ext": NoSuffixBuilder},
+    #cmdclass={"build_ext": NoSuffixBuilder},
     project_urls={
         'Documentation': 'https://github.com/leomariga/libtest_python_cpp',
         'Source': 'https://github.com/leomariga/libtest_python_cpp',
