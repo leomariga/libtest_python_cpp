@@ -15,13 +15,16 @@ with open("README.md", "r") as fh:
 #         suffix = sysconfig.get_config_var('EXT_SUFFIX')
 #         return filename.replace(suffix, "")
 
+module1 = Extension('testel',
+                    sources = ['testel.cpp'],
+                    optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
 
-extensions = [Extension('lib',
-                        [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
-                        depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
-                        optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
-                        extra_compile_args=['/d2FH4-'] if sys.platform == 'win32' else [],
-                        include_dirs=[os.path.join('pycpp_lib', 'cpp')],),]
+# extensions = [Extension('lib',
+#                         [os.path.join('pycpp_lib', 'cpp','lib.cpp')],
+#                         depends=[os.path.join('pycpp_lib', 'cpp','lib.h')],
+#                         optional=os.environ.get('CIBUILDWHEEL', '0') != '1',
+#                         extra_compile_args=['/d2FH4-'] if sys.platform == 'win32' else [],
+#                         include_dirs=[os.path.join('pycpp_lib', 'cpp')],),]
 
 setuptools.setup(
     name="libcppython", # Replace with your own username
@@ -34,7 +37,7 @@ setuptools.setup(
     url="https://github.com/leomariga/libtest_python_cpp",
     packages=setuptools.find_packages(),
     keywords='test',
-    ext_modules=extensions,
+    ext_modules=[module1],
     # cmdclass={"build_ext": NoSuffixBuilder},
     project_urls={
         'Documentation': 'https://github.com/leomariga/libtest_python_cpp',

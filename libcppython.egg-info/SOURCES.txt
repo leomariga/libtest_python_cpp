@@ -7,5 +7,3 @@ libcppython.egg-info/dependency_links.txt
 libcppython.egg-info/top_level.txt
 pycpp_lib/__init__.py
 pycpp_lib/myLib.py
-pycpp_lib/cpp/lib.cpp
-pycpp_lib/cpp/lib.h

@@ -1,2 +1,2 @@
 pycpp_lib
-pycpp_lib/mylib_core
+testel

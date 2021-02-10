@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: libcppython
-Version: 0.0.6
+Version: 0.0.8
 Summary: A test using CPP files on a python library
 Home-page: https://github.com/leomariga/libtest_python_cpp
 Author: Leonardo Mariga

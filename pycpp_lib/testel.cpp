@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "testel.h"
 
 int Function(int num) {
     std::cout << "Num = " << num << std::endl;
