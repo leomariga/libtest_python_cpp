@@ -15,7 +15,7 @@ with open("README.md", "r") as fh:
 #         suffix = sysconfig.get_config_var('EXT_SUFFIX')
 #         return filename.replace(suffix, "")
 
-libcppython = Extension('libcppython',
+libcppython = Extension('_libcppython',
                     sources = ['libcppython.cpp'],
                     depends=['libcppython.h'],
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
