@@ -15,11 +15,13 @@ with open("README.md", "r") as fh:
 #         suffix = sysconfig.get_config_var('EXT_SUFFIX')
 #         ext = os.path.splitext(filename)[1]
 #         return filename.replace(suffix, "") + ext
+cpp_args = ['/std:c++17']
 
 libcppython = Extension('libcppython',
                     sources = ['libcppython.cpp'],
                     depends=['libcppython.h'],
                     language='c++',
+                    extra_compile_args=cpp_args,
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
 
 # extensions = [Extension('lib',
