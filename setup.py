@@ -17,6 +17,7 @@ with open("README.md", "r") as fh:
 
 module1 = Extension('testel',
                     sources = ['testel.cpp'],
+                    depends=['testel.h'],
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
 
 # extensions = [Extension('lib',
