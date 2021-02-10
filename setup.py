@@ -15,7 +15,7 @@ with open("README.md", "r") as fh:
 #         suffix = sysconfig.get_config_var('EXT_SUFFIX')
 #         return filename.replace(suffix, "")
 
-module1 = Extension('libcppython',
+libcppython = Extension('libcppython',
                     sources = ['libcppython.cpp'],
                     depends=['libcppython.h'],
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
@@ -38,7 +38,8 @@ setuptools.setup(
     url="https://github.com/leomariga/libtest_python_cpp",
     packages=setuptools.find_packages(),
     keywords='test',
-    ext_modules=[module1],
+    py_modules=["libcppython"],
+    ext_modules=[libcppython],
     # cmdclass={"build_ext": NoSuffixBuilder},
     project_urls={
         'Documentation': 'https://github.com/leomariga/libtest_python_cpp',
