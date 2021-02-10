@@ -15,9 +15,9 @@ with open("README.md", "r") as fh:
 #         suffix = sysconfig.get_config_var('EXT_SUFFIX')
 #         return filename.replace(suffix, "")
 
-module1 = Extension('testel',
-                    sources = ['testel.cpp'],
-                    depends=['testel.h'],
+module1 = Extension('libcppython',
+                    sources = ['libcppython.cpp'],
+                    depends=['libcppython.h'],
                     optional=os.environ.get('CIBUILDWHEEL', '0') != '1')
 
 # extensions = [Extension('lib',
@@ -49,5 +49,5 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.8',
 )

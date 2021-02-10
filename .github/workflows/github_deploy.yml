@@ -6,7 +6,8 @@ env:
   # only needed for Py3.5 on Windows for some reason
   # ideally, would be picked up from pyproject.toml
   CIBW_BEFORE_BUILD: pip install cython
-  CIBW_SKIP: pp* cp27* *-win32
+  CIBW_SKIP: pp* cp27* *-win32 cp27-win*
+
 
 jobs:
   build_wheels:
